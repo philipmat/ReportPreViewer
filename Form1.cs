@@ -32,6 +32,10 @@ namespace ReportPreviewer
             reportFile.DataBindings.Add("Text", _config, "ReportPath", false, DataSourceUpdateMode.OnPropertyChanged);
             dbConnection.DataBindings.Add("Text", _config, "ConnectionString");
             queries.DataSource = new BindingList<Config.ReportDataSource>(_config.DataSources);
+            var pageSettings = defaults["PageSettings"] as System.Drawing.Printing.PageSettings;
+            if (pageSettings != null) {
+                reportViewer1.SetPageSettings(pageSettings);
+            }
         }
 
         private void LocalReportOnSubreportProcessing(object sender, SubreportProcessingEventArgs subreportProcessingEventArgs) {
@@ -48,6 +52,7 @@ namespace ReportPreviewer
             defs["Location"] = this.Location;
             defs["Size"] = this.Size;
             defs["Queries"] = JsonConvert.SerializeObject(_config.DataSources);
+            defs["PageSettings"] = reportViewer1.GetPageSettings();
             defs.Save();
         }
 
