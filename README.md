@@ -58,3 +58,5 @@ Your report(s) has one or more datasources it uses to render itself. In this sec
 * [ ] Multiple database support
 * [ ] Build binary distribution
 * [ ] Chocolatey support
+* [ ] Visual Studio 2015
+* [ ] Rewrite in F#
