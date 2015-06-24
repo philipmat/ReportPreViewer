@@ -60,3 +60,4 @@ Your report(s) has one or more datasources it uses to render itself. In this sec
 * [ ] Chocolatey support
 * [ ] Visual Studio 2015
 * [ ] Rewrite in F#
+* [ ] Save report page settings with the config
