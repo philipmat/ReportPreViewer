@@ -23,3 +23,28 @@ Need to tweak the data? A click away. Need to select a different report? A click
 
 *[image here]*
 
+## Installation
+
+You will need to install the [Microsoft Report Viewer Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=35747); currently, the latest version is 2012 or v11.
+
+You will need some sort of driver for your database. If you use Microsoft SQL Server, the driver is already on your system. For other databases:
+
+* [SQLite]()
+* [PostgreSQL]()
+* [MySQL]()
+* [Oracle]()
+
+You can either clone this report and build this project in Visual Studio 2013, or [download the binaries]().
+
+## How to use the app
+
+### Report Path
+Path to .rdlc file. If your rdlc has subreports, the main report will attempt to load them, if it can find them: that typically means they should be in the same location as the main report file.
+
+### Connection String
+A valid connection string for your database.
+
+* **SQL Server**: https://www.connectionstrings.com/sql-server/
+
+### Data Sources
+Your report(s) has one or more datasources it uses to render itself. In this section provide the name of each data source and a query string that can be used to load its data.
