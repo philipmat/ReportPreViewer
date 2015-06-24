@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,8 +32,6 @@ namespace ReportPreviewer
             reportFile.DataBindings.Add("Text", _config, "ReportPath", false, DataSourceUpdateMode.OnPropertyChanged);
             dbConnection.DataBindings.Add("Text", _config, "ConnectionString");
             queries.DataSource = new BindingList<Config.ReportDataSource>(_config.DataSources);
-            reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
-            reportViewer1.LocalReport.SubreportProcessing += LocalReportOnSubreportProcessing;
         }
 
         private void LocalReportOnSubreportProcessing(object sender, SubreportProcessingEventArgs subreportProcessingEventArgs) {
@@ -77,7 +75,14 @@ namespace ReportPreviewer
         }
 
         private void LoadReport() {
+            var pageSettings = reportViewer1.GetPageSettings();
             reportViewer1.LocalReport.DataSources.Clear();
+            // required to reload any changes from the disk
+            // unfortunately, this also clears all the settings, including event handlers
+            reportViewer1.Reset(); 
+            reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
+            if (pageSettings != null) reportViewer1.SetPageSettings(pageSettings);
+            reportViewer1.LocalReport.SubreportProcessing += LocalReportOnSubreportProcessing;
 
             try {
                 using (var db = new SqlConnection(_config.ConnectionString)) {
