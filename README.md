@@ -1,5 +1,5 @@
 # Report(Pre)Viewer
-Report(Pre)Viewer allows you to quickly and easily preview Microsoft .rdlc reports.
+Report(Pre)Viewer allows you to quickly and easily preview Microsoft .rdlc reports (without any coding; unless you want to).
 
 ## Why?
 Sure, you have the [ReportViewer Control](https://msdn.microsoft.com/en-us/library/ms251671.aspx), and I think it's great (after all this app is built on it), but you need to:
@@ -48,3 +48,13 @@ A valid connection string for your database.
 
 ### Data Sources
 Your report(s) has one or more datasources it uses to render itself. In this section provide the name of each data source and a query string that can be used to load its data.
+
+
+# TODO:
+
+* [ ] Better documentation
+* [ ] Saving/Loading different configurations
+* [ ] Better layout
+* [ ] Multiple database support
+* [ ] Build binary distribution
+* [ ] Chocolatey support
